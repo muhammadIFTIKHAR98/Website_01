@@ -1,0 +1,7 @@
+ #pip install flask
+# pip install flask-login
+# pip install flask-sqlalchemy
+
+
+from flask import FLASK 
+def create_app():
