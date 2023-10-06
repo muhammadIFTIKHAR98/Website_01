@@ -1,0 +1,42 @@
+#pip install Flask
+#my_cv_website/
+#    └── templates/
+#        └── index.html
+#    └── app.py
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee CV</title>
+</head>
+<body>
+    <h1>Employee CV</h1>
+    <h2>{{ employee_name }}</h2>
+    <p>{{ job_title }}</p>
+    <p>{{ email }}</p>
+    <p>{{ phone }}</p>
+</body>
+</html>
+
+
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+# Sample employee data
+employee_data = {
+    "employee_name": "John Doe",
+    "job_title": "Software Developer",
+    "email": "johndoe@example.com",
+    "phone": "+1 (123) 456-7890"
+}
+
+@app.route('/')
+def index():
+    return render_template('index.html', **employee_data)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+#THEN RUN APP
+python app.py
+
