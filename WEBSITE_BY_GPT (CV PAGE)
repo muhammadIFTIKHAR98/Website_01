@@ -1,0 +1,52 @@
+#pip install PyMuPDF
+
+from flask import Flask, render_template
+import fitz  # PyMuPDF library
+
+app = Flask(__name__)
+
+# Define the path to your CV PDF file
+cv_pdf_path = 'pdfs/your_cv.pdf'
+
+@app.route('/')
+def index():
+    # Open the PDF file
+    pdf_document = fitz.open(cv_pdf_path)
+    
+    # Get the number of pages in the PDF
+    num_pages = pdf_document.page_count
+
+    # Create a list to store the images of each page
+    page_images = []
+
+    # Iterate through each page and convert it to an image
+    for page_num in range(num_pages):
+        page = pdf_document.load_page(page_num)
+        image = page.get_pixmap()
+        page_images.append(image.get_data())
+
+    return render_template('index.html', page_images=page_images)
+# HTML CODE BELOW
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee CV</title>
+</head>
+<body>
+    <h1>Employee CV</h1>
+    
+    <!-- Display each page of the PDF as an image -->
+    {% for page_image in page_images %}
+        <img src="data:image/png;base64,{{ page_image|b64encode }}" alt="CV Page">
+    {% endfor %}
+</body>
+</html>
+
+
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
