@@ -26,6 +26,13 @@ def index():
         page_images.append(image.get_data())
 
     return render_template('index.html', page_images=page_images)
+# this is the way fordlers to be created
+
+#my_cv_website/
+#    └── templates/
+#        └── index.html
+#    └── app.py
+
 # HTML CODE BELOW
 <!DOCTYPE html>
 <html>
@@ -42,7 +49,7 @@ def index():
 </body>
 </html>
 
-
+# the above code is to be saved in the file which 
 
 
 
