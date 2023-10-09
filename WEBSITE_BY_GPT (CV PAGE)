@@ -6,7 +6,7 @@ import fitz  # PyMuPDF library
 app = Flask(__name__)
 
 # Define the path to your CV PDF file
-# we have rename the file name as it is given 
+# we have to give same file name here as it is given in the folder  
 cv_pdf_path = 'pdfs/your_cv.pdf'
 
 @app.route('/')
@@ -27,8 +27,8 @@ def index():
         page_images.append(image.get_data())
 
     return render_template('index.html', page_images=page_images)
-# this is the way fordlers to be created
 
+# this is the way folders  by which folders and sub folders to be created
 #my_cv_website/
 #    └── templates/
 #        └── index.html
