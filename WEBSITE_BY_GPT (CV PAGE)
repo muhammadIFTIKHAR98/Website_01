@@ -6,6 +6,7 @@ import fitz  # PyMuPDF library
 app = Flask(__name__)
 
 # Define the path to your CV PDF file
+# we have rename the file name as it is given 
 cv_pdf_path = 'pdfs/your_cv.pdf'
 
 @app.route('/')
